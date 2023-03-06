@@ -3,11 +3,11 @@ const {shuffleArray} = require('./utils')
 describe('shuffleArray should', () => {
     // CODE HERE
     let arr = [1, 2, 3]
-    it("returns an array the same length as the argument", () => {
-        expect(shuffleArray(arr).length).toBe(arr.length);
+    test("Returns an array the same length as the argument", () => {
+        expect(shuffleArray(arr).length).toEqual(arr.length);
     })
 
-    it("returns an array", () => {
-        expect(typeof shuffleArray(arr)).toBe("object");
-    })
+    test('Returns an array', () => {
+        expect(Array.isArray(shuffleArray([1, 2, 3]))).toBe(true)
+       })
 })

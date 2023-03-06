@@ -5,8 +5,8 @@ require('chromedriver')
 
 const driver = new Builder().withCapabilities(Capabilities.chrome()).build()
 
-beforeEach(async () => {
-    driver.get('http://localhost:3000/')
+beforeAll(async () => {
+    driver.get('http://localhost:4000/')
 })
 
 afterAll(async () => {
@@ -19,18 +19,18 @@ test('Title shows up when page loads', async () => {
     expect(displayed).toBe(true)
 })
 
-test('Draw button displays a div with id="choices"', async () => {
+test('Draw button displays a div with class="bot-card outline"', async () => {
     await driver.findElement(By.id('draw')).click()
     driver.sleep(1500)
-    const choices = await driver.findElement(By.id('choices'))
+    const choices = await driver.findElement(By.css('bot-card outline'))
     const displayed = await choices.isDisplayed()
     expect(displayed).toBe(true)
 })
 
-test('Add to duo button displays a div with id="player-duo', async () => {
+test('Add to duo button displays a div with class="bot-card outline', async () => {
     await driver.findElement(By.css('bot-btn')).click
     driver.sleep(1500)
-    const playerDuo = await driver.findElement(By.id('player-duo'))
+    const playerDuo = await driver.findElement(By.css('bot-card outline'))
     const displayed = await playerDuo.isDisplayed()
     expect(displayed).toBe(true)
 })
